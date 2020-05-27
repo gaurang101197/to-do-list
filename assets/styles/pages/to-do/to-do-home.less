@@ -1,0 +1,81 @@
+#to-do-home {
+  
+  .daily-tasks {
+    width: 47%;
+    float: left;
+  }
+  
+  .daily-tasks-header{
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .daily-todo-tasks-list,
+  .daily-done-tasks-list{
+    overflow: scroll;
+    list-style-type: none;
+  }
+  
+  .done-task {
+    text-decoration: line-through;
+  }
+  
+  .to-do-checkbox {
+    padding: 0px 7px;
+    background: lightgray;
+    margin-right: 5px;
+  }
+  
+  .to-do-checkbox:hover {
+    cursor: pointer;
+    background: gray;
+  }
+  
+  .done-checkbox {
+    padding: 0px 7px;
+    background: gray;
+    margin-right: 5px;
+  }
+  
+  .done-checkbox:hover {
+    cursor: pointer;
+    background: lightgray;
+  }
+  
+  .text-button-light {
+    padding: 2px 5px;
+    background: #ccc;
+  }
+  
+  .text-button-light:hover {
+    cursor: pointer;
+    background: #ccc;
+    color: #fff;
+  }
+  
+  .right-float {
+    float: right;
+    display: inline-block;
+  }
+  
+  .left-float {
+    white-space: nowrap;
+    float: left;
+    display: inline-block;
+  }
+  
+  .newTask {
+    background: lightgray;
+  }
+  
+  p:empty:not(:focus)::before {
+    content: attr(data-placeholder);
+  }
+
+  .date {
+    margin: 10px 10px;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 1;
+  }
+}

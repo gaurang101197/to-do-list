@@ -1,0 +1,49 @@
+#recurring-task {
+  .recurring-tasks {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text-button-light {
+    padding: 0px 5px;
+    background: #ccc;
+  }
+
+  .text-button-light:hover {
+      cursor: pointer;
+      padding: 2px 5px;
+      background: #ccc;
+      color: #fff;
+  }
+
+  .right-float {
+    float: right;
+    display: inline-block;
+  }
+
+  .left-float {
+      white-space: nowrap;
+      float: left;
+      display: inline-block;
+  }
+
+  .newTask {
+      background: lightgray;
+  }
+
+  p:empty:not(:focus)::before {
+      content: attr(data-placeholder);
+  }
+
+  .recurring-tasks-header {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .recurring-tasks-list {
+    overflow: scroll;
+    list-style-type: none;
+  }
+
+}

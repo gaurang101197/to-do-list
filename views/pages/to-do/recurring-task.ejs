@@ -1,0 +1,22 @@
+<div id="recurring-task" v-cloak>
+  <div class="recurring-tasks">
+    <h2 class="recurring-tasks-header">Recurring Tasks</h2>
+    <ul class="list-group recurring-tasks-list">
+      <li v-for="(task, index) in recurringTasks" :key="task.taskId + index" v-if="task.isActive"
+        class="list-group-item">
+        <span :id="'close' + index" class="text-button-light right-float" @click="removeRecurringTask(index)">x</span>
+
+        <p contenteditable="true" class="content" :id="recurringTaskId + index"
+          @keypress="$event.key == 'Enter' ? editTask($event, index) : {}" @blur="editTaskOnBlur(index)">{{ task.name }}
+        </p>
+      </li>
+
+      <li class="list-group-item">
+        <p :id="newTaskId + recurringTasks.length" contenteditable="true" class="content newTask"
+          :data-placeholder="newTaskTip" @blur="addRecurringTask"
+          @keypress="$event.key == 'Enter' ? addRecurringTask() : {}"></p>
+      </li>
+    </ul>
+  </div>
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

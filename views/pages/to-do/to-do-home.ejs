@@ -1,0 +1,58 @@
+<div id="to-do-home" v-cloak>
+  <div class="date">
+    <span>
+        <input type="date" id="date" v-model="date" class="right-float">
+        <p id="submit-date" class="text-button-light right-float" @click="loadDailyTasks()">Get Tasks</p>
+    </span>
+  </div>
+  <div>
+    <div id="to-do-tasks" class="daily-tasks">
+      <h2 class="daily-tasks-header">TO-DO Tasks</h2>
+      <ul class="list-group daily-todo-tasks-list">
+        <div>
+          <li class="list-group-item" v-for="(task, index) in dailyTasks" :key="task.taskId + index"
+            v-if="task.isActive && !task.isDone">
+            <!-- <input type="checkbox" :id="TO_DO_ELEMENT + index" :name="TO_DO_ELEMENT + index" @change="markDailyTaskDone(index)"> -->
+
+            <span :id="'to-do-checkbox-' + index" class="to-do-checkbox left-float"
+              @click="markDailyTaskDone(index)">&nbsp</span>
+
+            <span :id="'close' + index" class="text-button-light right-float" @click="removeDailyTask(index)">x</span>
+
+            <p :id="TASK_ID + index" contenteditable="true" class="content" @blur="updateTaskName(index)"
+              @keypress="$event.key == 'Enter' ? updateTaskName(index) : {}">{{ task.name }}
+            </p>
+          </li>
+        </div>
+        <li class="list-group-item">
+          <p :id="newTaskId + dailyTasks.length" contenteditable="true" class="content newTask"
+            :data-placeholder="newTaskTip" @blur="addDailyTask" @keypress="$event.key == 'Enter' ? addDailyTask() : {}">
+          </p>
+        </li>
+
+      </ul>
+    </div>
+
+    <div id="done-tasks" class="daily-tasks">
+      <h2 class="daily-tasks-header">Completed Tasks</h2>
+      <ul class="list-group daily-done-tasks-list">
+        <div>
+          <li v-for="(task, index) in dailyTasks" :key="task.taskId + index" v-if="task.isActive && task.isDone"
+            class="list-group-item done-task">
+            <!-- <input type="checkbox" :id="DONE_ELEMENT + index" :name="DONE_ELEMENT + index" @change="markDailyTaskUndone(index)"> -->
+
+            <span :id="'done-checkbox-' + index" class="done-checkbox left-float"
+              @click="markDailyTaskUndone(index)">&nbsp</span>
+
+            <span id='close' class="text-button-light right-float" @click="removeDailyTask(index)">x</span>
+
+            <p :id="TASK_ID + index" contenteditable="true" class="content" @blur="updateTaskName(index)"
+              @keypress="$event.key == 'Enter' ? updateTaskName(index) : {}">{{ task.name }}</p>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
